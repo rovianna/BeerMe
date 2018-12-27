@@ -33,7 +33,7 @@ class BaseRequester {
     static let shared = BaseRequester()
     
     func baseRequester(path: String, httpMethod: HTTPMethod, completion: @escaping callback) {
-        if let pathRequest = URL(string: "\(BeerRequesterData.shared.enviroment)") {
+        if let pathRequest = URL(string: "\(BeerRequesterData.shared.enviroment)/\(path)") {
             Alamofire.request(pathRequest, method: httpMethod, parameters: nil, encoding: JSONEncoding.default, headers: nil).responseJSON { (response) in
                 switch response.result {
                     case .failure(let error):
