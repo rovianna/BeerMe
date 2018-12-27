@@ -13,16 +13,18 @@ class MainBeerListViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     var dataSource: MainBeerListDataSource?
-    
     var beers = [Beer]() {
         didSet {
             loadBeers(beers)
         }
     }
     
+    let requester = BeerRequester()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        tableView.estimatedRowHeight = UITableView.automaticDimension
+        requestRemoteBeer()
     }
     
     func loadBeers(_ beers: [Beer]) {
@@ -39,10 +41,25 @@ class MainBeerListViewController: UIViewController {
         source.delegate = self
         self.dataSource = source
     }
+    
+    func requestRemoteBeer() {
+        let remoteRepository = RemoteBeerRepository()
+        remoteRepository.getAllBeers { (result) in
+            switch result {
+            case .success(let data):
+                self.beers = data
+            case .failure(let error):
+                break
+            }
+        }
+    }
+    
 }
 
 extension MainBeerListViewController: MainBeerListDataSourceDelegate {
     func mainBeerListDataSource(_ ds: MainBeerListDataSource, didSelect beer: Beer) {
-        
+        let vc = BeerDetailViewController.instance
+        vc.beer = beer
+        present(vc, animated: true, completion: nil)
     }
 }

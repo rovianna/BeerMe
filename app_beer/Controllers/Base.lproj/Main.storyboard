@@ -29,7 +29,7 @@
         <!--Beer Detail View Controller-->
         <scene sceneID="d3J-c4-gos">
             <objects>
-                <viewController id="gjp-Fw-fTj" customClass="BeerDetailViewController" customModule="app_beer" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="detail" id="gjp-Fw-fTj" customClass="BeerDetailViewController" customModule="app_beer" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="9j8-7t-NOA">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

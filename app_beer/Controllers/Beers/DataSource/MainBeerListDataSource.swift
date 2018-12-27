@@ -30,6 +30,7 @@ class MainBeerListDataSource: NSObject, UITableViewDelegate, UITableViewDataSour
         self.beers = beers
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.register(UINib(nibName: "BeerTableViewCell", bundle: nil), forCellReuseIdentifier: "beer")
         self.tableView = tableView
     }
     
@@ -44,7 +45,10 @@ class MainBeerListDataSource: NSObject, UITableViewDelegate, UITableViewDataSour
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell()
+        let beer = beers[indexPath.row]
+        let cell = tableView.dequeueReusableCell(withIdentifier: "beer", for: indexPath) as! BeerTableViewCell
+        cell.configure(beer: beer)
+        return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
