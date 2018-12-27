@@ -14,7 +14,12 @@ class MainBeerListViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     
-    var dataSource: MainBeerListDataSource?
+    var dataSource: MainBeerListDataSource? {
+        didSet {
+            loadingView.stopAnimating()
+        }
+    }
+    
     var beers = [Beer]() {
         didSet {
             loadBeers(beers)
@@ -22,9 +27,12 @@ class MainBeerListViewController: UIViewController {
     }
     
     let requester = BeerRequester()
+    let loadingView = LoadingView.instance
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.addSubview(loadingView)
+        loadingView.startAnimating()
         tableView.estimatedRowHeight = UITableView.automaticDimension
         tableView.rowHeight = 150
         if userDefaults.object(forKey: "beers") != nil {

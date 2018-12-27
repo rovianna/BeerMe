@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4931C56421D542A000A45B3D /* LoadingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4931C56321D542A000A45B3D /* LoadingView.xib */; };
+		4931C56621D542BB00A45B3D /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4931C56521D542BB00A45B3D /* LoadingView.swift */; };
 		496F4E0E21D4E00800FC90B9 /* BaseRequester.swift in Sources */ = {isa = PBXBuildFile; fileRef = 496F4E0D21D4E00800FC90B9 /* BaseRequester.swift */; };
 		496F4E1021D4E18700FC90B9 /* BeerRequester.swift in Sources */ = {isa = PBXBuildFile; fileRef = 496F4E0F21D4E18700FC90B9 /* BeerRequester.swift */; };
 		496F4E1221D4E1D700FC90B9 /* Beer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 496F4E1121D4E1D700FC90B9 /* Beer.swift */; };
@@ -51,6 +53,8 @@
 /* Begin PBXFileReference section */
 		2C0DC549DE56C0FEB697A9D8 /* Pods_app_beerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_app_beerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		33A9B241208E2E38677AE46F /* Pods-app_beerUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-app_beerUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-app_beerUITests/Pods-app_beerUITests.release.xcconfig"; sourceTree = "<group>"; };
+		4931C56321D542A000A45B3D /* LoadingView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoadingView.xib; sourceTree = "<group>"; };
+		4931C56521D542BB00A45B3D /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		496F4E0D21D4E00800FC90B9 /* BaseRequester.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseRequester.swift; sourceTree = "<group>"; };
 		496F4E0F21D4E18700FC90B9 /* BeerRequester.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerRequester.swift; sourceTree = "<group>"; };
 		496F4E1121D4E1D700FC90B9 /* Beer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Beer.swift; sourceTree = "<group>"; };
@@ -152,6 +156,8 @@
 			children = (
 				496F4E2621D5060300FC90B9 /* BlankState.xib */,
 				496F4E2821D5060F00FC90B9 /* BlankState.swift */,
+				4931C56321D542A000A45B3D /* LoadingView.xib */,
+				4931C56521D542BB00A45B3D /* LoadingView.swift */,
 			);
 			path = "Custom View";
 			sourceTree = "<group>";
@@ -384,6 +390,7 @@
 				499985F721D4DD6A00191573 /* LaunchScreen.storyboard in Resources */,
 				496F4E2721D5060300FC90B9 /* BlankState.xib in Resources */,
 				499985F421D4DD6A00191573 /* Assets.xcassets in Resources */,
+				4931C56421D542A000A45B3D /* LoadingView.xib in Resources */,
 				499985F221D4DD6900191573 /* Main.storyboard in Resources */,
 				496F4E1F21D4F5EB00FC90B9 /* BeerTableViewCell.xib in Resources */,
 			);
@@ -498,6 +505,7 @@
 				496F4E2221D4F80900FC90B9 /* UIImageView.swift in Sources */,
 				496F4E1521D4EA1900FC90B9 /* BeerRepository.swift in Sources */,
 				4999862121D4DE8600191573 /* BeerDetailViewController.swift in Sources */,
+				4931C56621D542BB00A45B3D /* LoadingView.swift in Sources */,
 				499985ED21D4DD6900191573 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
