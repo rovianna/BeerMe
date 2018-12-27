@@ -8,6 +8,8 @@
 
 import UIKit
 
+fileprivate let userDefaults = UserDefaults.standard
+
 class MainBeerListViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
@@ -25,7 +27,11 @@ class MainBeerListViewController: UIViewController {
         super.viewDidLoad()
         tableView.estimatedRowHeight = UITableView.automaticDimension
         tableView.rowHeight = 150
-        requestRemoteBeerRepository()
+        if userDefaults.object(forKey: "beers") != nil {
+            requestLocalBeerRepository()
+        } else {
+            requestRemoteBeerRepository()
+        }
     }
     
     func loadBeers(_ beers: [Beer]) {
@@ -61,6 +67,12 @@ class MainBeerListViewController: UIViewController {
             switch result {
             case .success(let data):
                 self.beers = data
+                do {
+                    let encodedData = try NSKeyedArchiver.archivedData(withRootObject: self.beers, requiringSecureCoding: false)
+                    userDefaults.set(encodedData, forKey: "beers")
+                } catch {
+                    self.showErrorAlert(title: "Erro", message: error.localizedDescription)
+                }
             case .failure(let error):
                 self.showErrorAlert(title: "Erro", message: error.localizedDescription)
             }

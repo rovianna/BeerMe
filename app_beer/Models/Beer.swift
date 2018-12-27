@@ -45,7 +45,7 @@ class Beer: NSObject, NSCoding {
         let imageUrl = aDecoder.decodeObject(forKey: "image") as! String
         let tagline = aDecoder.decodeObject(forKey: "tagline") as! String
         let bitternessScale = aDecoder.decodeObject(forKey: "ibu") as! String
-        let beerDescription = aDecoder.decodeObject(forKey: "description") as! String
+        let beerDescription = aDecoder.decodeObject(forKey: "beerDescription") as! String
         
         self.init(id: id, name: name, alcoholContent: alcoholContent, imageUrl: imageUrl, tagline: tagline, bitternessScale: bitternessScale, beerDescription: beerDescription)
     }
@@ -57,7 +57,7 @@ class Beer: NSObject, NSCoding {
         aCoder.encode(imageUrl, forKey: "image")
         aCoder.encode(tagline, forKey: "tagline")
         aCoder.encode(bitternessScale, forKey: "ibu")
-        aCoder.encode(description, forKey: "description")
+        aCoder.encode(beerDescription, forKey: "beerDescription")
     }
     
 }
