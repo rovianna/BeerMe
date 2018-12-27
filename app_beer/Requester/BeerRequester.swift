@@ -7,3 +7,9 @@
 //
 
 import Foundation
+
+class BeerRequester {
+    func getBeersList(completion: @escaping (Result<String>)-> Void) {
+    
+    }
+}
