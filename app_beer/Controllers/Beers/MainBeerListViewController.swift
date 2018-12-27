@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  MainBeerListViewController.swift
 //  app_beer
 //
 //  Created by Rodrigo Vianna on 27/12/18.
@@ -8,13 +8,10 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class MainBeerListViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
     }
-
-
 }
-
