@@ -14,6 +14,10 @@ class BeerTableViewCell: UITableViewCell {
     @IBOutlet weak var beerNameLabel: UILabel!
     @IBOutlet weak var beerABVLabel: UILabel!
     
+    override func awakeFromNib() {
+        selectionStyle = .none
+    }
+    
     func configure(beer: Beer) {
         beerImageView.downloadImage(from: beer.imageUrl)
         beerNameLabel.text = beer.name

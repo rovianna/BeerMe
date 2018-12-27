@@ -21,4 +21,8 @@ class BeerDetailViewController: UIViewController {
         super.viewDidLoad()
         assert(beer != nil, "Must have a beer!")
     }
+    
+    @IBAction func closeDetailAction(_ sender: UIButton) {
+        self.dismiss(animated: true, completion: nil)
+    }
 }
