@@ -24,7 +24,7 @@ class MainBeerListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.estimatedRowHeight = UITableView.automaticDimension
-        requestRemoteBeer()
+        requestRemoteBeerRepository()
     }
     
     func loadBeers(_ beers: [Beer]) {
@@ -42,14 +42,26 @@ class MainBeerListViewController: UIViewController {
         self.dataSource = source
     }
     
-    func requestRemoteBeer() {
+    func requestLocalBeerRepository() {
+        let localRepository = LocalBeerRepository()
+        localRepository.getAllBeers { (result) in
+            switch result {
+            case .success(let data):
+                self.beers = data
+            case .failure(let error):
+                self.showErrorAlert(title: "Erro", message: error.localizedDescription)
+            }
+        }
+    }
+    
+    func requestRemoteBeerRepository() {
         let remoteRepository = RemoteBeerRepository()
         remoteRepository.getAllBeers { (result) in
             switch result {
             case .success(let data):
                 self.beers = data
             case .failure(let error):
-                break
+                self.showErrorAlert(title: "Erro", message: error.localizedDescription)
             }
         }
     }

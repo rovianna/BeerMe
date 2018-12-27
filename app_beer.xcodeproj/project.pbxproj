@@ -15,6 +15,7 @@
 		496F4E1E21D4F5EB00FC90B9 /* BeerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 496F4E1C21D4F5EB00FC90B9 /* BeerTableViewCell.swift */; };
 		496F4E1F21D4F5EB00FC90B9 /* BeerTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 496F4E1D21D4F5EB00FC90B9 /* BeerTableViewCell.xib */; };
 		496F4E2221D4F80900FC90B9 /* UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 496F4E2121D4F80900FC90B9 /* UIImageView.swift */; };
+		496F4E2421D5036300FC90B9 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 496F4E2321D5036300FC90B9 /* UIViewController.swift */; };
 		499985ED21D4DD6900191573 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499985EC21D4DD6900191573 /* AppDelegate.swift */; };
 		499985F221D4DD6900191573 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 499985F021D4DD6900191573 /* Main.storyboard */; };
 		499985F421D4DD6A00191573 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 499985F321D4DD6A00191573 /* Assets.xcassets */; };
@@ -56,6 +57,7 @@
 		496F4E1C21D4F5EB00FC90B9 /* BeerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerTableViewCell.swift; sourceTree = "<group>"; };
 		496F4E1D21D4F5EB00FC90B9 /* BeerTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BeerTableViewCell.xib; sourceTree = "<group>"; };
 		496F4E2121D4F80900FC90B9 /* UIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageView.swift; sourceTree = "<group>"; };
+		496F4E2321D5036300FC90B9 /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		499985E921D4DD6900191573 /* app_beer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = app_beer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		499985EC21D4DD6900191573 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		499985F121D4DD6900191573 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -136,6 +138,7 @@
 			isa = PBXGroup;
 			children = (
 				496F4E2121D4F80900FC90B9 /* UIImageView.swift */,
+				496F4E2321D5036300FC90B9 /* UIViewController.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -472,6 +475,7 @@
 				4999861F21D4DE6800191573 /* MainBeerListViewController.swift in Sources */,
 				496F4E1E21D4F5EB00FC90B9 /* BeerTableViewCell.swift in Sources */,
 				496F4E1821D4EF9800FC90B9 /* MainBeerListDataSource.swift in Sources */,
+				496F4E2421D5036300FC90B9 /* UIViewController.swift in Sources */,
 				496F4E1221D4E1D700FC90B9 /* Beer.swift in Sources */,
 				496F4E1021D4E18700FC90B9 /* BeerRequester.swift in Sources */,
 				496F4E0E21D4E00800FC90B9 /* BaseRequester.swift in Sources */,
