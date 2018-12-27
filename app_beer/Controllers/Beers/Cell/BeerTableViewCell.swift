@@ -10,15 +10,14 @@ import UIKit
 
 class BeerTableViewCell: UITableViewCell {
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    @IBOutlet weak var beerImageView: UIImageView!
+    @IBOutlet weak var beerNameLabel: UILabel!
+    @IBOutlet weak var beerABVLabel: UILabel!
+    
+    func configure(beer: Beer) {
+        beerImageView.downloadImage(from: beer.imageUrl)
+        beerNameLabel.text = beer.name
+        beerABVLabel.text = "Teor alcoólico: \(beer.alcoholContent)"
     }
     
 }
