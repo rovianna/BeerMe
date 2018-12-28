@@ -47,3 +47,20 @@ class BaseRequester {
         }
     }
 }
+
+class BaseRequesterNative {
+    static let shared = BaseRequesterNative()
+    func baseRequester(path: String, completion: @escaping callback) {
+        guard let pathRequester = URL(string: "\(BeerRequesterData.shared.enviroment)/\(path)") else { return }
+        let session = URLSession.shared
+        session.dataTask(with: pathRequester) { (data, response, error) in
+            if error != nil {
+                let wrapper = ResponseWrapper<Any>(result: Result.failure(error!))
+                completion(wrapper)
+            }
+            guard let data = data else { return }
+                let wrapper = ResponseWrapper<Any>(result: Result.success(JSON(data)))
+                completion(wrapper)
+        }.resume()
+    }
+}

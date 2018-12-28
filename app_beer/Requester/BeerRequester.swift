@@ -12,18 +12,18 @@ import SwiftyJSON
 class BeerRequester {
     func getBeersList(completion: @escaping (Result<[Beer]>)-> Void) {
         let path = "beers"
-        BaseRequester.shared.baseRequester(path: path, httpMethod: .get) { (response) in
+        BaseRequesterNative.shared.baseRequester(path: path) { (response) in
             switch response.result {
+                case .failure(let error):
+                    DispatchQueue.main.async {
+                        completion(Result.failure(error))
+                }
                 case .success(let data):
                     let beers = JSON(data).arrayValue.compactMap { Beer.init(withJSON: $0) }
                     DispatchQueue.main.async {
                         completion(Result.success(beers))
                     }
-                case .failure(let error):
-                    DispatchQueue.main.async {
-                        completion(Result.failure(error))
-                    }
+                }
             }
         }
     }
-}

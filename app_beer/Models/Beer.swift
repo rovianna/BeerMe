@@ -9,16 +9,16 @@
 import Foundation
 import SwiftyJSON
 
-class Beer: NSObject, NSCoding {
+class Beer: NSObject, NSCoding, Decodable {
     var id: String
     var name: String
-    var alcoholContent: String
+    var alcoholContent: Float
     var imageUrl: String
     var tagline: String
-    var bitternessScale: String
+    var bitternessScale: Int
     var beerDescription: String
     
-    init(id: String, name: String, alcoholContent: String, imageUrl: String, tagline: String, bitternessScale: String, beerDescription: String) {
+    init(id: String, name: String, alcoholContent: Float, imageUrl: String, tagline: String, bitternessScale: Int, beerDescription: String) {
         self.id = id
         self.name = name
         self.alcoholContent = alcoholContent
@@ -31,20 +31,20 @@ class Beer: NSObject, NSCoding {
     init(withJSON json: JSON) {
         id = json["id"].stringValue
         name = json["name"].stringValue
-        alcoholContent = json["abv"].stringValue
+        alcoholContent = json["abv"].floatValue
         imageUrl = json["image_url"].stringValue
         tagline = json["tagline"].stringValue
-        bitternessScale = json["ibu"].stringValue
+        bitternessScale = json["ibu"].intValue
         beerDescription = json["description"].stringValue
     }
     
     required convenience init(coder aDecoder: NSCoder) {
         let id = aDecoder.decodeObject(forKey: "id") as! String
         let name = aDecoder.decodeObject(forKey: "name") as! String
-        let alcoholContent = aDecoder.decodeObject(forKey: "abv") as! String
+        let alcoholContent = aDecoder.decodeObject(forKey: "abv") as! Float
         let imageUrl = aDecoder.decodeObject(forKey: "image") as! String
         let tagline = aDecoder.decodeObject(forKey: "tagline") as! String
-        let bitternessScale = aDecoder.decodeObject(forKey: "ibu") as! String
+        let bitternessScale = aDecoder.decodeObject(forKey: "ibu") as! Int
         let beerDescription = aDecoder.decodeObject(forKey: "beerDescription") as! String
         
         self.init(id: id, name: name, alcoholContent: alcoholContent, imageUrl: imageUrl, tagline: tagline, bitternessScale: bitternessScale, beerDescription: beerDescription)
