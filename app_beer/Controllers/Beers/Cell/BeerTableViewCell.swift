@@ -19,7 +19,7 @@ class BeerTableViewCell: UITableViewCell {
     }
     
     func configure(beer: Beer) {
-        beerImageView.downloadImage(from: beer.imageUrl)
+        beerImageView.loadImage(for: beer)
         beerNameLabel.text = beer.name
         beerABVLabel.text = "Teor alcoólico: \(beer.alcoholContent)"
     }

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 extension UIImageView {
     func downloadImage(from url: String) {
@@ -20,5 +21,12 @@ extension UIImageView {
         }
         task.resume()
     }
+    
+    func loadImage(for beer: Beer) {
+        sd_setImage(with: URL(string: beer.imageUrl), placeholderImage: UIImage(named: "beer.png"), options: .continueInBackground) { (image, error, cache, url) in
+            guard error == nil else { return }
+        }
+    }
+    
 }
 

@@ -8,6 +8,7 @@ target 'app_beer' do
   # Pods for app_beer
   pod 'Alamofire'
   pod 'SwiftyJSON'
+  pod 'SDWebImage'
   target 'app_beerTests' do
     inherit! :search_paths
     # Pods for testing
