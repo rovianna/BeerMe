@@ -10,8 +10,14 @@ import Foundation
 import SwiftyJSON
 
 class BeerRequester {
-    func getBeersList(completion: @escaping (Result<[Beer]>)-> Void) {
-        let path = "beers"
+    func getBeersList(list: [Beer]?, completion: @escaping (Result<[Beer]>)-> Void) {
+        var currentPage = 1
+        guard let beers = list else { return }
+        if !beers.isEmpty {
+            currentPage = (beers.count / 25) + 1
+            
+        }
+        let path = "beers?page=\(currentPage)&per_page=25"
         BaseRequesterNative.shared.baseRequester(path: path) { (response) in
             switch response.result {
                 case .failure(let error):

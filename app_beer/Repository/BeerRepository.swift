@@ -13,11 +13,11 @@ import SwiftyJSON
 fileprivate let userDefaults = UserDefaults.standard
 
 protocol BeerRepository {
-    func getAllBeers(completion: @escaping(Result<[Beer]>)->Void)
+    func getAllBeers(beer: [Beer]?, completion: @escaping(Result<[Beer]>)->Void)
 }
 
 class LocalBeerRepository: BeerRepository {
-    func getAllBeers(completion: @escaping (Result<[Beer]>) -> Void) {
+    func getAllBeers(beer: [Beer]?, completion: @escaping (Result<[Beer]>) -> Void) {
         var beersList = [Beer]()
         let decodedData = userDefaults.object(forKey: "beers") as! Data
         do {
@@ -32,9 +32,9 @@ class LocalBeerRepository: BeerRepository {
 }
 
 class RemoteBeerRepository: BeerRepository {
-    func getAllBeers(completion: @escaping (Result<[Beer]>) -> Void) {
+    func getAllBeers(beer: [Beer]?, completion: @escaping (Result<[Beer]>) -> Void) {
         let beerRequester = BeerRequester()
-        beerRequester.getBeersList { (result) in
+        beerRequester.getBeersList(list: beer) { (result) in
             switch result {
                 case .success(let data):
                 completion(Result.success(data))

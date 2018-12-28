@@ -56,7 +56,7 @@ class MainBeerListViewController: UIViewController {
     
     func requestLocalBeerRepository() {
         let localRepository = LocalBeerRepository()
-        localRepository.getAllBeers { (result) in
+        localRepository.getAllBeers(beer: nil) { (result) in
             switch result {
             case .success(let data):
                 self.beers = data
@@ -68,10 +68,12 @@ class MainBeerListViewController: UIViewController {
     
     func requestRemoteBeerRepository() {
         let remoteRepository = RemoteBeerRepository()
-        remoteRepository.getAllBeers { (result) in
+        remoteRepository.getAllBeers(beer: beers) { (result) in
             switch result {
             case .success(let data):
-                self.beers = data
+                for beer in data {
+                    self.beers.append(beer)
+                }
                 do {
                     let encodedData = try NSKeyedArchiver.archivedData(withRootObject: self.beers, requiringSecureCoding: false)
                     userDefaults.set(encodedData, forKey: "beers")
@@ -107,6 +109,10 @@ class MainBeerListViewController: UIViewController {
 }
 
 extension MainBeerListViewController: MainBeerListDataSourceDelegate {
+    func mainBeerListDataSource(_ ds: MainBeerListDataSource, didReach lastElement: Bool) {
+        requestRemoteBeerRepository()
+    }
+    
     func mainBeerListDataSource(_ ds: MainBeerListDataSource, didSelect beer: Beer) {
         DispatchQueue.main.async {
             let vc = BeerDetailViewController.instance

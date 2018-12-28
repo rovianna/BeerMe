@@ -10,6 +10,7 @@ import UIKit
 
 protocol MainBeerListDataSourceDelegate {
     func mainBeerListDataSource(_ ds: MainBeerListDataSource, didSelect beer: Beer)
+    func mainBeerListDataSource(_ ds: MainBeerListDataSource, didReach lastElement: Bool)
 }
 
 class MainBeerListDataSource: NSObject, UITableViewDelegate, UITableViewDataSource {
@@ -48,6 +49,9 @@ class MainBeerListDataSource: NSObject, UITableViewDelegate, UITableViewDataSour
         let beer = beers[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "beer", for: indexPath) as! BeerTableViewCell
         cell.configure(beer: beer)
+        if indexPath.row == beers.count - 1 {
+            delegate?.mainBeerListDataSource(self, didReach: true)
+        }
         return cell
     }
     
