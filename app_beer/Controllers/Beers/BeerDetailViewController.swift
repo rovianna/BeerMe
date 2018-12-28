@@ -20,7 +20,8 @@ class BeerDetailViewController: UIViewController {
     @IBOutlet weak var beerTaglineLabel: UILabel!
     @IBOutlet weak var beerABVLabel: UILabel!
     @IBOutlet weak var beerIBULabel: UILabel!
-    @IBOutlet weak var beerDescriptionLabel: UILabel!
+    @IBOutlet weak var beerDescriptionTextView: UITextView!
+    
     
     var beer: Beer!
     
@@ -36,7 +37,7 @@ class BeerDetailViewController: UIViewController {
         beerTaglineLabel.text = beer.tagline
         beerABVLabel.text = "Teor alcoólico: \(beer.alcoholContent)"
         beerIBULabel.text = "Escala de amargor: \(beer.bitternessScale)"
-        beerDescriptionLabel.text = beer.beerDescription
+        beerDescriptionTextView.text = beer.beerDescription
     }
     
     @IBAction func closeDetailAction(_ sender: UIButton) {

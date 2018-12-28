@@ -41,10 +41,10 @@ class Beer: NSObject, NSCoding, Decodable {
     required convenience init(coder aDecoder: NSCoder) {
         let id = aDecoder.decodeObject(forKey: "id") as! String
         let name = aDecoder.decodeObject(forKey: "name") as! String
-        let alcoholContent = aDecoder.decodeObject(forKey: "abv") as! Float
+        let alcoholContent = aDecoder.decodeFloat(forKey: "abv")
         let imageUrl = aDecoder.decodeObject(forKey: "image") as! String
         let tagline = aDecoder.decodeObject(forKey: "tagline") as! String
-        let bitternessScale = aDecoder.decodeObject(forKey: "ibu") as! Int
+        let bitternessScale = aDecoder.decodeInteger(forKey: "ibu")
         let beerDescription = aDecoder.decodeObject(forKey: "beerDescription") as! String
         
         self.init(id: id, name: name, alcoholContent: alcoholContent, imageUrl: imageUrl, tagline: tagline, bitternessScale: bitternessScale, beerDescription: beerDescription)
