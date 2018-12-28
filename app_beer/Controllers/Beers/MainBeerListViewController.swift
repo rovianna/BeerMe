@@ -17,6 +17,7 @@ class MainBeerListViewController: UIViewController {
     var dataSource: MainBeerListDataSource? {
         didSet {
             loadingView.stopAnimating()
+            view.bringSubviewToFront(tableView)
         }
     }
     
@@ -35,11 +36,7 @@ class MainBeerListViewController: UIViewController {
         loadingView.startAnimating()
         tableView.estimatedRowHeight = UITableView.automaticDimension
         tableView.rowHeight = 150
-        if userDefaults.object(forKey: "beers") != nil {
-            requestLocalBeerRepository()
-        } else {
-            requestRemoteBeerRepository()
-        }
+        requestBeers()
     }
     
     func loadBeers(_ beers: [Beer]) {
@@ -63,8 +60,8 @@ class MainBeerListViewController: UIViewController {
             switch result {
             case .success(let data):
                 self.beers = data
-            case .failure(let error):
-                self.showErrorAlert(title: "Erro", message: error.localizedDescription)
+            case .failure( _):
+                self.loadBlankState()
             }
         }
     }
@@ -79,11 +76,31 @@ class MainBeerListViewController: UIViewController {
                     let encodedData = try NSKeyedArchiver.archivedData(withRootObject: self.beers, requiringSecureCoding: false)
                     userDefaults.set(encodedData, forKey: "beers")
                 } catch {
-                    self.showErrorAlert(title: "Erro", message: error.localizedDescription)
+                    self.loadBlankState()
                 }
-            case .failure(let error):
-                self.showErrorAlert(title: "Erro", message: error.localizedDescription)
+            case .failure( _):
+                self.loadBlankState()
             }
+        }
+    }
+    
+    func requestBeers() {
+        if userDefaults.object(forKey: "beers") != nil {
+            requestLocalBeerRepository()
+        } else {
+            requestRemoteBeerRepository()
+        }
+    }
+    
+    func loadBlankState() {
+        let blankState = BlankState.instance
+        view.addSubview(blankState)
+        view.bringSubviewToFront(blankState)
+        blankState.titleLabel.text = "Ops!"
+        blankState.descriptionLabel.text = "Uma de nossas cervejas caiu, estamos limpando o mais rápido possível!"
+        blankState.errorButton.setTitle("Tentar Novamente", for: .normal)
+        blankState.action = { _ in
+            self.requestBeers()
         }
     }
     
