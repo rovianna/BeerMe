@@ -87,7 +87,7 @@
                                 </subviews>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JJy-DM-su1">
-                                <rect key="frame" x="59" y="20" width="260" height="28"/>
+                                <rect key="frame" x="60" y="20" width="259" height="28"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="260" id="Aug-sF-fNg"/>
                                 </constraints>
@@ -110,6 +110,7 @@
                             <constraint firstItem="cDH-8y-CGb" firstAttribute="trailing" secondItem="hVR-i8-heN" secondAttribute="trailing" constant="16" id="lGw-N7-hFD"/>
                             <constraint firstItem="Zb3-B7-urJ" firstAttribute="centerX" secondItem="hVR-i8-heN" secondAttribute="centerX" id="rDv-U9-DyV"/>
                             <constraint firstItem="Zb3-B7-urJ" firstAttribute="top" secondItem="JJy-DM-su1" secondAttribute="bottom" constant="61" id="t15-Ps-ayw"/>
+                            <constraint firstItem="JJy-DM-su1" firstAttribute="leading" secondItem="cDH-8y-CGb" secondAttribute="leading" constant="60" id="xT9-dd-eLI"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="cDH-8y-CGb"/>
                     </view>

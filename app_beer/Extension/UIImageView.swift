@@ -23,7 +23,7 @@ extension UIImageView {
     }
     
     func loadImage(for beer: Beer) {
-        sd_setImage(with: URL(string: beer.imageUrl), placeholderImage: UIImage(named: "beer.png"), options: .continueInBackground) { (image, error, cache, url) in
+        sd_setImage(with: URL(string: beer.imageUrl), placeholderImage: UIImage(named: "loading.png"), options: .continueInBackground) { (image, error, cache, url) in
             guard error == nil else { return }
         }
     }
